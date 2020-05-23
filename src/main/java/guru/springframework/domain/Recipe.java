@@ -7,7 +7,7 @@ import java.util.Set;
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
@@ -32,7 +32,7 @@ public class Recipe {
 
     @ManyToMany
     @JoinTable(name= "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> category;
+    private Set<Category> categories;
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
@@ -42,12 +42,12 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public Set<Category> getCategory() {
-        return category;
+    public Set<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Set<Category> category) {
-        this.category = category;
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     public Long getId() {
